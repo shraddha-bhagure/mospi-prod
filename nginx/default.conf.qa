@@ -1,7 +1,7 @@
 server {
     listen 443 ssl;
     #server_name 115.124.108.4;
-    server_name qa-mospi.esdsconnect.com;
+    server_name domian.com;
     large_client_header_buffers 8 32k;
 
     proxy_send_timeout 36000s;
@@ -33,28 +33,28 @@ server {
    # Location block for website
     location / {
         sub_filter_once off;
-        proxy_pass http://172.16.25.17:30010;
+        proxy_pass http://10.20.30.20:30010;
         proxy_redirect off;
     }
 
     # Location block for website-cms
     location /auth/login/ {
         sub_filter_once off;
-        proxy_pass http://172.16.25.17:30020;
+        proxy_pass http://10.20.30.20:30020;
         proxy_redirect off;
     }
 
       # Location block for backend
     location /api/ {
         sub_filter_once off;
-        proxy_pass http://172.16.25.17:30030;
+        proxy_pass http://10.20.30.20:30030;
         proxy_redirect off;
     }
 
      # Location block for backend
     location /uploads/ {
         sub_filter_once off;
-        proxy_pass http://172.16.25.17:30030;
+        proxy_pass http://10.20.30.20:30030;
         proxy_redirect off;
     }
 
