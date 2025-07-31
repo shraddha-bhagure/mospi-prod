@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mospi-front-website
+  labels:
+    app: mospi-front-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mospi-front-website
+  template:
+    metadata:
+      labels:
+        app: mospi-front-website
+    spec:
+      containers:
+        - name: mospi-front-website
+          image: hub.enlight.dev/mospi/mospi-front-website:v1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+

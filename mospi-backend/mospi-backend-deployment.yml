@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mospi-backend
+  labels:
+    app: mospi-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mospi-backend
+  template:
+    metadata:
+      labels:
+        app: mospi-backend
+    spec:
+      containers:
+        - name: mospi-backend
+          image: hub.enlight.dev/mospi/mospi-backend:v1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: mospi-backend-storage
+              mountPath: /app/uploads  # Mount the PVC at this path in the container
+      volumes:
+        - name: mospi-backend-storage
+          persistentVolumeClaim:
+            claimName: mospi-backend-pvc  

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mospi-front-cms
+  labels:
+    app: mospi-front-cms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mospi-front-cms
+  template:
+    metadata:
+      labels:
+        app: mospi-front-cms
+    spec:
+      containers:
+        - name: mospi-front-cms
+          image: hub.enlight.dev/mospi/mospi-front-cms:v1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+
