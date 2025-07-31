@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mospi-backend
-          image: hub.enlight.dev/mospi/mospi-backend:v1.0
+          image: release.enlightcloud.com/mospi/mospi-backend:v1.0
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
